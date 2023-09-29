@@ -44,8 +44,7 @@ Afterwards, when you remove it using the 'unequip' syntax, only one is removed.
 
 My guess is that this phenomenon occurs because the cosmetics mounted on the back are divided into two types: the general model and the self model.
 However, since the same phenomenon occurs even though only one model is used for the cosmetics mounted on the head, I think it is an API issue with the CosmeticsCore plugin.
-
-Or maybe I didn't make it.
+(or maybe I didn't make it.)
 ```
 set {_cosmetics} to random cosmetics
 
