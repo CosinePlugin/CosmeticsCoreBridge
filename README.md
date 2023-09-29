@@ -1,6 +1,9 @@
 # CosmeticsCoreBridge
 CosmeticsCore Skript Addon
 
+## Download
+You can download the plugin from the [release page](https://github.com/CosinePlugins/CosmeticsCoreBridge/releases).
+
 ## How to use
 
 ### Cosmetics
