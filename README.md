@@ -2,7 +2,7 @@
 **CosmeticsCoreBridge** is a Skript addon plugin that helps you use the API of the CosmeticsCore plugin in Skript.
 
 ## Download
-You can download the plugin from the [release page](https://github.com/CosinePlugins/CosmeticsCoreBridge/releases).
+You can download the plugin from the [spigot page]([https://github.com/CosinePlugins/CosmeticsCoreBridge/releases](https://www.spigotmc.org/resources/cosmeticscorebridge.112866/)).
 
 ## Needs Plugins
 *  [Skript](https://github.com/SkriptLang/Skript/releases)
