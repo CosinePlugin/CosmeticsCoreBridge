@@ -27,8 +27,13 @@ public class PermissionService {
         }
         return user.data().toCollection().stream()
             .map(Node::getKey)
-            .filter(key -> onlyWear && key.contains("cosmetics.wear"))
-            .toList();
+            .filter(key -> {
+                if (onlyWear) {
+                    return key.contains(CosmeticsPermission.WEAR.permission);
+                } else {
+                    return key.contains("cosmeticscore.user.cosmetics");
+                }
+            }).toList();
     }
 
     public void addPermission(Player player, String cosmeticName) {
@@ -41,9 +46,10 @@ public class PermissionService {
 
     public void removeAllPermission(Player player) {
         manager.modifyUser(player.getUniqueId(), user -> {
+            NodeMap userData = user.data();
             getPermissions(player, false, false).forEach(permission -> {
                 ScopedNode<?, ?> node = getNode(permission);
-                user.data().remove(node);
+                userData.remove(node);
             });
         });
     }

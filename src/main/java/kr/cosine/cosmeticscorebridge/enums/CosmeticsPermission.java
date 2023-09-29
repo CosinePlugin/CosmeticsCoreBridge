@@ -4,7 +4,7 @@ public enum CosmeticsPermission {
     WEAR("cosmeticscore.user.cosmetics.wear"),
     SEE_IN_GUI("cosmeticscore.user.cosmetics.seeingui");
 
-    private final String permission;
+    public final String permission;
 
     CosmeticsPermission(String permission) {
         this.permission = permission;
