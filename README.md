@@ -77,7 +77,7 @@ add "chef_hat" to player's cosmetics
 remove {_cosmetic} from player's cosmetics
 remove "chef_hat" from player's cosmetics
 
-# remove all player's cosmetics
+# clear cosmetics
 clear player's cosmetics
 delete player's cosmetics
 ```
