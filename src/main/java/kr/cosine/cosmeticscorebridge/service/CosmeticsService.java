@@ -53,13 +53,10 @@ public class CosmeticsService {
     public void equipCosmetics(String key, Player player) {
         CosmeticAccessor accessor = CosmeticsCoreApi.newCosmeticAccessor(key, player);
         accessor.equip();
-        player.sendMessage("equip");
     }
 
     public void unequipCosmetics(String key, Player player) {
         CosmeticAccessor accessor = CosmeticsCoreApi.newCosmeticAccessor(key, player);
         accessor.unequip();
-        accessor.unequip();
-        player.sendMessage("unequip");
     }
 }
