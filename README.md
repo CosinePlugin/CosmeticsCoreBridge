@@ -1,5 +1,5 @@
 # CosmeticsCoreBridge
-CosmeticsCore Skript Addon
+**CosmeticsCoreBridge** is a Skript addon plugin that helps you use the API of the CosmeticsCore plugin in Skript.
 
 ## Download
 You can download the plugin from the [release page](https://github.com/CosinePlugins/CosmeticsCoreBridge/releases).
