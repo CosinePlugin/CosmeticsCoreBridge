@@ -4,6 +4,11 @@ CosmeticsCore Skript Addon
 ## Download
 You can download the plugin from the [release page](https://github.com/CosinePlugins/CosmeticsCoreBridge/releases).
 
+# Needs Plugins
+*  [Skript](https://github.com/SkriptLang/Skript/releases)
+*  [CosmeticsCore](https://www.spigotmc.org/resources/cosmeticscore.105324/)
+*  [LuckPerms](https://luckperms.net/download)
+
 ## Bug Report
 Please report bugs to cosine_a (Discord).
 
