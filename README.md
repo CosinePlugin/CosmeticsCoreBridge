@@ -15,7 +15,7 @@ Please report bugs to cosine_a (Discord).
 ## How to use
 
 ### Cosmetics
-This is a skript statement created with a little trick. It will not work if there is not even one player on the server.
+This is a skript syntax created with a little trick. It will not work if there is not even one player on the server.
 ```
 # get all cosmetics
 set {_cosmetics::*} to all cosmetics
@@ -39,8 +39,8 @@ set {_model} to {_cosmetics}'s model
 ### Cosmetics Equip
 We recommend that you do not use this syntax for players other than testing or admin.
 
-For example, if you equip 'backpack' with the 'equip' statement and output the player's equipped cosmetics, two 'backpack' will be output.
-Afterwards, when you remove it using the 'unequip' statement, only one is removed.
+For example, if you equip 'backpack' with the 'equip' syntax and output the player's equipped cosmetics, two 'backpack' will be output.
+Afterwards, when you remove it using the 'unequip' syntax, only one is removed.
 
 My guess is that this phenomenon occurs because the cosmetics mounted on the back are divided into two types: the general model and the self model.
 However, since the same phenomenon occurs even though only one model is used for the cosmetics mounted on the head, I think it is an API issue with the CosmeticsCore plugin.
