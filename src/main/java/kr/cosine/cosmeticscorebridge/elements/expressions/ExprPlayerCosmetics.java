@@ -7,31 +7,39 @@ import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import ch.njol.util.coll.CollectionUtils;
+import kr.cosine.cosmeticscorebridge.CosmeticsCoreBridge;
+import kr.cosine.cosmeticscorebridge.data.Cosmetics;
+import kr.cosine.cosmeticscorebridge.service.CosmeticsService;
 import kr.cosine.cosmeticscorebridge.service.PermissionService;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 
-/*
-public class ExprPlayerCosmetics extends SimpleExpression<String> {
+import java.util.List;
+
+public class ExprPlayerCosmetics extends SimpleExpression<Cosmetics> {
 
     static {
         Skript.registerExpression(
             ExprPlayerCosmetics.class,
-            String.class,
+            Cosmetics.class,
             ExpressionType.SIMPLE,
             "cosmetics of %player%", "%player%'s cosmetics"
         );
     }
 
+    private final CosmeticsCoreBridge plugin = CosmeticsCoreBridge.getInstance();
+    private final PermissionService permissionService = plugin.getPermissionService();
+    private final CosmeticsService cosmeticsService = plugin.getCosmeticsService();
+
     private Expression<Player> expressionPlayer;
 
     @Override
-    protected String[] get(Event event) {
+    protected Cosmetics[] get(Event event) {
         Player player = expressionPlayer.getSingle(event);
         if (player != null) {
-            var keys = PermissionService.getPermissions(player, false);
-            return keys.toArray(String[]::new);
+            List<String> permissions = permissionService.getPermissions(player, false);
+            List<Cosmetics> cosmeticsKeys = cosmeticsService.getCosmeticsFromPermissions(permissions, player);
+            return cosmeticsKeys.toArray(Cosmetics[]::new);
         }
         return null;
     }
@@ -42,8 +50,8 @@ public class ExprPlayerCosmetics extends SimpleExpression<String> {
     }
 
     @Override
-    public Class<? extends String> getReturnType() {
-        return String.class;
+    public Class<? extends Cosmetics> getReturnType() {
+        return Cosmetics.class;
     }
 
     @Override
@@ -63,16 +71,27 @@ public class ExprPlayerCosmetics extends SimpleExpression<String> {
         if (player != null) {
             switch (mode) {
                 case ADD -> {
-                    String input = (String) delta[0];
-                    PermissionService.addPermission(player, input);
+                    String permission = getPermission(delta);
+                    permissionService.addPermission(player, permission);
                 }
                 case REMOVE -> {
-                    String input = (String) delta[0];
-                    PermissionService.removePermission(player, input);
+                    String permission = getPermission(delta);
+                    permissionService.removePermission(player, permission);
                 }
-                case DELETE, RESET -> PermissionService.removeAllPermission(player);
+                case DELETE, RESET -> permissionService.removeAllPermission(player);
             }
         }
+    }
+
+    private String getPermission(Object[] delta) {
+        Object input = delta[0];
+        String permission;
+        if (input instanceof Cosmetics) {
+            permission = ((Cosmetics) input).getKey();
+        } else {
+            permission = (String) input;
+        }
+        return permission;
     }
 
     @Override
@@ -82,9 +101,11 @@ public class ExprPlayerCosmetics extends SimpleExpression<String> {
             mode == Changer.ChangeMode.DELETE ||
             mode == Changer.ChangeMode.RESET
         ) {
-            return CollectionUtils.array(String.class);
+            return new Class[] {
+                String.class,
+                Cosmetics.class
+            };
         }
         return null;
     }
 }
-*/

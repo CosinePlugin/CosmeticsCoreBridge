@@ -1,27 +1,12 @@
 package kr.cosine.cosmeticscorebridge.elements.expressions;
 
-import ch.njol.skript.Skript;
-import ch.njol.skript.classes.Changer;
-import ch.njol.skript.lang.Expression;
-import ch.njol.skript.lang.ExpressionType;
-import ch.njol.skript.lang.SkriptParser;
-import ch.njol.skript.lang.util.SimpleExpression;
-import ch.njol.util.Kleenean;
-import ch.njol.util.coll.CollectionUtils;
-import kr.cosine.cosmeticscorebridge.data.Cosmetics;
-import kr.cosine.cosmeticscorebridge.service.CosmeticsService;
-import kr.cosine.cosmeticscorebridge.service.PermissionService;
-import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
-
-import java.util.List;
-
-public class ExprPlayerCosmetics2 extends SimpleExpression<Cosmetics> {
+/*
+public class ExprPlayerCosmetics extends SimpleExpression<String> {
 
     static {
         Skript.registerExpression(
-            ExprPlayerCosmetics2.class,
-            Cosmetics.class,
+            ExprPlayerCosmetics.class,
+            String.class,
             ExpressionType.SIMPLE,
             "cosmetics of %player%", "%player%'s cosmetics"
         );
@@ -30,16 +15,11 @@ public class ExprPlayerCosmetics2 extends SimpleExpression<Cosmetics> {
     private Expression<Player> expressionPlayer;
 
     @Override
-    protected Cosmetics[] get(Event event) {
+    protected String[] get(Event event) {
         Player player = expressionPlayer.getSingle(event);
         if (player != null) {
-            List<String> permissions = PermissionService.getPermissions(player, false);
-            System.out.println(permissions);
-            List<String> cosmeticsKeys = CosmeticsService.getCosmeticsKeys(permissions);
-            System.out.println(cosmeticsKeys);
-            List<Cosmetics> cosmeticsList = CosmeticsService.getCosmeticsFromKeys(cosmeticsKeys, player);
-            System.out.println(cosmeticsList);
-            return cosmeticsList.toArray(Cosmetics[]::new);
+            var keys = PermissionService.getPermissions(player, false);
+            return keys.toArray(String[]::new);
         }
         return null;
     }
@@ -50,8 +30,8 @@ public class ExprPlayerCosmetics2 extends SimpleExpression<Cosmetics> {
     }
 
     @Override
-    public Class<? extends Cosmetics> getReturnType() {
-        return Cosmetics.class;
+    public Class<? extends String> getReturnType() {
+        return String.class;
     }
 
     @Override
@@ -90,8 +70,9 @@ public class ExprPlayerCosmetics2 extends SimpleExpression<Cosmetics> {
             mode == Changer.ChangeMode.DELETE ||
             mode == Changer.ChangeMode.RESET
         ) {
-            return CollectionUtils.array(Cosmetics.class);
+            return CollectionUtils.array(String.class);
         }
         return null;
     }
 }
+*/

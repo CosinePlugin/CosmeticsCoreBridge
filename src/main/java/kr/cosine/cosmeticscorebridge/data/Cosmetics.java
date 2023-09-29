@@ -1,24 +1,39 @@
 package kr.cosine.cosmeticscorebridge.data;
 
+import org.bukkit.inventory.ItemStack;
+
 public class Cosmetics {
 
     private String key;
 
     private String displayName;
 
+    private ItemStack itemStack;
+
     public String getKey() {
         return key;
     }
 
-    public void setKey(String key) {
+    public Cosmetics setKey(String key) {
         this.key = key;
+        return this;
     }
 
     public String getDisplayName() {
         return displayName;
     }
 
-    public void setDisplayName(String displayName) {
+    public Cosmetics setDisplayName(String displayName) {
         this.displayName = displayName;
+        return this;
+    }
+
+    public ItemStack getItemStack() {
+        return itemStack;
+    }
+
+    public Cosmetics setItemStack(ItemStack itemStack) {
+        this.itemStack = itemStack;
+        return this;
     }
 }

@@ -6,26 +6,28 @@ import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import dev.lone.cosmeticscore.api.temporary.CosmeticsCoreApi;
+import kr.cosine.cosmeticscorebridge.CosmeticsCoreBridge;
+import kr.cosine.cosmeticscorebridge.data.Cosmetics;
+import kr.cosine.cosmeticscorebridge.service.CosmeticsService;
 import org.bukkit.event.Event;
 
-import java.util.List;
-
-public class ExprCosmetics extends SimpleExpression<String> {
+public class ExprAllCosmetics extends SimpleExpression<Cosmetics> {
 
     static {
         Skript.registerExpression(
-            ExprCosmetics.class,
-            String.class,
+            ExprAllCosmetics.class,
+            Cosmetics.class,
             ExpressionType.SIMPLE,
             "all cosmetics"
         );
     }
 
+    private final CosmeticsCoreBridge plugin = CosmeticsCoreBridge.getInstance();
+    private final CosmeticsService cosmeticsService = plugin.getCosmeticsService();
+
     @Override
-    protected String[] get(Event e) {
-        List<?> keys = (List<String>) CosmeticsCoreApi.getCosmeticsKeysCopy();
-        return keys.toArray(String[]::new);
+    protected Cosmetics[] get(Event event) {
+        return cosmeticsService.getCosmetics().toArray(Cosmetics[]::new);
     }
 
     @Override
@@ -34,8 +36,8 @@ public class ExprCosmetics extends SimpleExpression<String> {
     }
 
     @Override
-    public Class<? extends String> getReturnType() {
-        return String.class;
+    public Class<? extends Cosmetics> getReturnType() {
+        return Cosmetics.class;
     }
 
     @Override

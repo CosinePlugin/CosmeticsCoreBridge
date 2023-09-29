@@ -5,10 +5,10 @@ import org.bukkit.Server;
 
 public class SchedulerService {
 
-    private static final CosmeticsCoreBridge plugin = CosmeticsCoreBridge.getInstance();
-    private static final Server server = plugin.getServer();
+    private final CosmeticsCoreBridge plugin = CosmeticsCoreBridge.getInstance();
+    private final Server server = plugin.getServer();
 
-    public static void async(Runnable runnable) {
+    public void async(Runnable runnable) {
         server.getScheduler().runTaskAsynchronously(plugin, runnable);
     }
 }

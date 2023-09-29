@@ -15,9 +15,9 @@ import java.util.function.BiConsumer;
 
 public class PermissionService {
 
-    private static final UserManager manager = LuckPermsProvider.get().getUserManager();
+    private final UserManager manager = LuckPermsProvider.get().getUserManager();
 
-    public static List<String> getPermissions(Player player, boolean isNewLoad) {
+    public List<String> getPermissions(Player player, boolean isNewLoad) {
         UUID playerUniqueId = player.getUniqueId();
         User user;
         if (isNewLoad) {
@@ -31,15 +31,15 @@ public class PermissionService {
             .toList();
     }
 
-    public static void addPermission(Player player, String cosmeticName) {
+    public void addPermission(Player player, String cosmeticName) {
         modifyPermission(player.getUniqueId(), cosmeticName, NodeMap::add);
     }
 
-    public static void removePermission(Player player, String cosmeticName) {
+    public void removePermission(Player player, String cosmeticName) {
         modifyPermission(player.getUniqueId(), cosmeticName, NodeMap::remove);
     }
 
-    public static void removeAllPermission(Player player) {
+    public void removeAllPermission(Player player) {
         manager.modifyUser(player.getUniqueId(), user -> {
             getPermissions(player, false).forEach(permission -> {
                 ScopedNode<?, ?> node = getNode(permission);
@@ -48,7 +48,7 @@ public class PermissionService {
         });
     }
 
-    public static void modifyPermission(UUID uniqueId, String cosmeticName, BiConsumer<NodeMap, ScopedNode<?, ?>> actionFunction) {
+    public void modifyPermission(UUID uniqueId, String cosmeticName, BiConsumer<NodeMap, ScopedNode<?, ?>> actionFunction) {
         manager.modifyUser(uniqueId, user -> {
             for (CosmeticsPermission cosmeticsPermission : CosmeticsPermission.values()) {
                 ScopedNode<?, ?> node = getNode(cosmeticsPermission.getPermission(cosmeticName));
@@ -57,7 +57,7 @@ public class PermissionService {
         });
     }
 
-    private static ScopedNode<?, ?> getNode(String permission) {
+    private ScopedNode<?, ?> getNode(String permission) {
         return Node.builder(permission).build();
     }
 }
