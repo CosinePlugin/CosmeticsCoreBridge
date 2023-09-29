@@ -4,7 +4,6 @@ import dev.lone.cosmeticscore.api.temporary.CosmeticAccessor;
 import dev.lone.cosmeticscore.api.temporary.CosmeticsCoreApi;
 import kr.cosine.cosmeticscorebridge.data.Cosmetics;
 import org.bukkit.Bukkit;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 import java.util.List;
