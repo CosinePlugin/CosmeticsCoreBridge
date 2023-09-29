@@ -4,5 +4,6 @@ api-version: 1.16
 main: kr.cosine.cosmeticscorebridge.CosmeticsCoreBridge
 author: Cosine_A
 depend:
+  - Skript
   - CosmeticsCore
   - LuckPerms
