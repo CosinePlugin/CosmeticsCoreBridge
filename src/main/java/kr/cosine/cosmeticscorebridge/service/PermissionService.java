@@ -17,7 +17,7 @@ public class PermissionService {
 
     private final UserManager manager = LuckPermsProvider.get().getUserManager();
 
-    public List<String> getPermissions(Player player, boolean isNewLoad) {
+    public List<String> getPermissions(Player player, boolean isNewLoad, boolean onlyWear) {
         UUID playerUniqueId = player.getUniqueId();
         User user;
         if (isNewLoad) {
@@ -27,7 +27,7 @@ public class PermissionService {
         }
         return user.data().toCollection().stream()
             .map(Node::getKey)
-            .filter(key -> key.contains("cosmetics.wear"))
+            .filter(key -> onlyWear && key.contains("cosmetics.wear"))
             .toList();
     }
 
@@ -41,7 +41,7 @@ public class PermissionService {
 
     public void removeAllPermission(Player player) {
         manager.modifyUser(player.getUniqueId(), user -> {
-            getPermissions(player, false).forEach(permission -> {
+            getPermissions(player, false, false).forEach(permission -> {
                 ScopedNode<?, ?> node = getNode(permission);
                 user.data().remove(node);
             });
