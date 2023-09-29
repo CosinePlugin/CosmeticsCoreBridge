@@ -1,0 +1,8 @@
+name: CosmeticsCoreBridge
+version: 1.0.0
+api-version: 1.16
+main: kr.cosine.cosmeticscorebridge.CosmeticsCoreBridge
+author: Cosine_A
+depend:
+  - CosmeticsCore
+  - LuckPerms
