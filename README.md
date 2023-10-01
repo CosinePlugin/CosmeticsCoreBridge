@@ -10,7 +10,7 @@ You can download the plugin from the [SpigotMC](https://www.spigotmc.org/resourc
 *  [LuckPerms](https://luckperms.net/download)
 
 ## Bug Report
-Please report bugs to cosine_a (Discord) or [Discord Server](https://discord.gg/EpkqPZSpjr).
+Please report bugs to [Discord Server](https://discord.gg/EpkqPZSpjr).
 
 ## How to use
 
