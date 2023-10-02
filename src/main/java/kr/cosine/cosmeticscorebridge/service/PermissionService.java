@@ -29,9 +29,10 @@ public class PermissionService {
             .map(Node::getKey)
             .filter(key -> {
                 if (onlyWear) {
-                    return key.contains(CosmeticsPermission.WEAR.permission);
+                    return key.contains(CosmeticsPermission.WEAR.getWithPoint());
                 } else {
-                    return key.contains("cosmeticscore.user.cosmetics");
+                    return key.contains(CosmeticsPermission.WEAR.getWithPoint()) ||
+                        key.contains(CosmeticsPermission.SEE_IN_GUI.getWithPoint());
                 }
             }).toList();
     }
