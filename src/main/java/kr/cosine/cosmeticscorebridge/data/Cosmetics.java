@@ -4,6 +4,8 @@ import org.bukkit.inventory.ItemStack;
 
 public class Cosmetics {
 
+    public boolean isNotNull = true;
+
     private String key;
 
     private String displayName;

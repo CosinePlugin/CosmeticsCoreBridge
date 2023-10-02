@@ -38,7 +38,7 @@ public class ExprPlayerCosmetics extends SimpleExpression<Cosmetics> {
         Player player = expressionPlayer.getSingle(event);
         if (player != null) {
             List<String> permissions = permissionService.getPermissions(player, false, true);
-            List<Cosmetics> cosmeticsKeys = cosmeticsService.getCosmeticsFromPermissions(permissions, player);
+            List<Cosmetics> cosmeticsKeys = cosmeticsService.getCosmeticsByPermissions(permissions, player);
             return cosmeticsKeys.toArray(Cosmetics[]::new);
         }
         return null;

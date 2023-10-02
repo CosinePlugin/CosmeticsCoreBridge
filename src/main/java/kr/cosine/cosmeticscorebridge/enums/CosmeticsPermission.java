@@ -13,4 +13,8 @@ public enum CosmeticsPermission {
     public String getPermission(String cosmeticName) {
         return permission + "." + cosmeticName;
     }
+
+    public String getWithPoint() {
+        return permission + ".";
+    }
 }
