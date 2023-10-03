@@ -22,6 +22,28 @@ set {_cosmetics::*} to all cosmetics
 
 # get random cosmetics
 set {_cosmetics} to random cosmetics
+
+# get cosmetics by key
+set {_cosmetics} to cosmetics by "chef_hat"
+```
+### Cosmetics Condition
+```
+# check cosmetics is registered
+command /isCosmetics [<Text>]:
+    trigger:
+        set {_cosmetics} to cosmetics by arg-1
+        if {_cosmetics} is cosmetics: # or if arg-1 is cosmetics:
+            send "%arg-1% is cosmetics"
+        else:
+            send "%arg-1% is not cosmetics"
+
+# check player is in wardrobe
+command /isInWardrobe [<Player>]:
+    trigger:
+        if arg-1 is in wardrobe:
+            send "%arg-1% is in!!"
+        else:
+            send "%arg-1% is out!!"
 ```
 ### Cosmetics Info
 ```
