@@ -2,14 +2,13 @@ package kr.cosine.cosmeticscorebridge.elements.conditions;
 
 import ch.njol.skript.conditions.base.PropertyCondition;
 import kr.cosine.cosmeticscorebridge.CosmeticsCoreBridge;
-import kr.cosine.cosmeticscorebridge.data.Cosmetics;
 import kr.cosine.cosmeticscorebridge.service.CosmeticsService;
 
-public class CondCosmeticsKey extends PropertyCondition<String> {
+public class CondIsCosmeticsKey extends PropertyCondition<String> {
 
     static {
         register(
-            CondCosmeticsKey.class,
+            CondIsCosmeticsKey.class,
             PropertyType.BE,
             "cosmetics",
             "string"

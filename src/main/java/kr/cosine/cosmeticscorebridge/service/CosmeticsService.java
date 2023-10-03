@@ -15,7 +15,7 @@ public class CosmeticsService {
     private final CosmeticsCoreApi cosmeticsCoreApi = new CosmeticsCoreApi();
 
     public boolean isCosmetics(String key) {
-        return getCosmeticsKeys().contains(key);
+        return CosmeticsCoreApi.isCosmeticRegistered(key);
     }
 
     public List<Cosmetics> getCosmetics() {
@@ -73,6 +73,10 @@ public class CosmeticsService {
         } catch (NullPointerException e) {
             return null;
         }
+    }
+
+    public boolean isInWardrobe(Player player) {
+        return cosmeticsCoreApi.isInWardrobe(player);
     }
 
     public void equipCosmetics(String key, Player player) {

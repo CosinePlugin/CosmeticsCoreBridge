@@ -3,11 +3,11 @@ package kr.cosine.cosmeticscorebridge.elements.conditions;
 import ch.njol.skript.conditions.base.PropertyCondition;
 import kr.cosine.cosmeticscorebridge.data.Cosmetics;
 
-public class CondCosmetics extends PropertyCondition<Cosmetics> {
+public class CondIsCosmetics extends PropertyCondition<Cosmetics> {
 
     static {
         register(
-            CondCosmetics.class,
+            CondIsCosmetics.class,
             PropertyType.BE,
             "cosmetics",
             "cosmetic"
